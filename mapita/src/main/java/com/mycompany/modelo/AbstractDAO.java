@@ -99,7 +99,7 @@ public abstract class AbstractDAO<T> {
      */
     protected T find(Class clazz, int id){
         T obj =null;
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
@@ -124,7 +124,7 @@ public abstract class AbstractDAO<T> {
      */
     protected List<T> findAll(Class clazz){
         List<T> obj =null;
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
@@ -143,6 +143,7 @@ public abstract class AbstractDAO<T> {
         }
         return obj;
     }
+    
     
     
 }
